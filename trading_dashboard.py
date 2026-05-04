@@ -7,13 +7,12 @@ import plotly.graph_objects as go
 from sklearn.ensemble import RandomForestClassifier
 
 # ================= CONFIG =================
-SYMBOL = "RELIANCE.NS"   # You can change to any stock
+SYMBOL = "RELIANCE.NS"
 INTERVAL = "5m"
 PERIOD = "5d"
 
 RSI_BUY = 30
 RSI_SELL = 70
-
 # ==========================================
 
 st.set_page_config(
@@ -33,7 +32,6 @@ def get_data():
 
 # ---------- INDICATORS ----------
 def add_indicators(df):
-    def add_indicators(df):
     if isinstance(df.columns, pd.MultiIndex):
         df.columns = df.columns.get_level_values(0)
 
