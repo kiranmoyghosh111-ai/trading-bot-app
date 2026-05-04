@@ -33,9 +33,16 @@ def get_data():
 
 # ---------- INDICATORS ----------
 def add_indicators(df):
+    def add_indicators(df):
+    if isinstance(df.columns, pd.MultiIndex):
+        df.columns = df.columns.get_level_values(0)
+
+    df['Close'] = pd.to_numeric(df['Close'], errors='coerce')
+
     df['rsi'] = ta.momentum.RSIIndicator(df['Close']).rsi()
     df['ma50'] = df['Close'].rolling(50).mean()
     df['returns'] = df['Close'].pct_change()
+
     return df
 
 # ---------- AI MODEL ----------
